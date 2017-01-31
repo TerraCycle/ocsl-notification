@@ -1,0 +1,112 @@
+<div id='container'>
+  <div id='request-wrap' class='column'>
+    <h3>OCSL request JSON example:</h3>
+    <div class='column'>
+      <% params =
+        [{
+            name: "uuid",
+            description: "UUID for the OCSL in the TC system",
+            type: "string"
+        },
+        {
+            name: "client_params",
+            description: "Custom parameters passed by the client to the widget",
+            type: "string"
+        },
+        {
+            name: "brigade_name",
+            description: "Chosen brigade",
+            type: "string"
+        },
+        {
+            name: "first_name",
+            description: "First name",
+            type: "string"
+        },
+        {
+            name: "last_name",
+            description: "Last name",
+            type: "string"
+        },
+        {
+            name: "email",
+            description: "Email",
+            type: "string"
+        },
+        {
+            name: "phone_number",
+            description: "Phone number",
+            type: "string"
+        },
+        {
+            name: "address",
+            description: "Address line 1",
+            type: "string"
+        },
+        {
+            name: "address2",
+            description: "Address line 2",
+            type: "string"
+        },
+        {
+            name: "city",
+            description: "City",
+            type: "string"
+        },
+        {
+            name: "region",
+            description: "Region",
+            type: "string"
+        },
+        {
+            name: "zipcode",
+            description: "Zipcode",
+            type: "string"
+        },
+        {
+            name: "checkbox1",
+            description: "checkbox1",
+            type: "boolean"
+        },
+        {
+            name: "checkbox2",
+            description: "checkbox2",
+            type: "boolean"
+        }]
+      %>
+      <table border="1" cellpadding="2" cellspacing="0">
+        <thead>
+          <th>FIELD</th>
+          <th>TYPE</th>
+          <th>DESCRIPTION</th>
+        </thead>
+        <tbody>
+          <% params.each do |el| %>
+            <tr>
+              <td><%= el[:name] %></td>
+              <td><%= el[:type] %></td>
+              <td><%= el[:description] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      </pre>
+    </div>
+
+    <div id='request-form' class='column'>
+      <form id='request'>
+        <div>
+          <textarea name="json" cols=40 rows=20></textarea>
+        </div>
+
+        <button>send request</button>
+      </form>
+    </div>
+  </div>
+
+  <div id='response-wrap' class='column'>
+    <h3>RESPONSE: </h3>
+    <pre id='response'></pre>
+  </div>
+</div>

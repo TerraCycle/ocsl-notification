@@ -1,28 +1,101 @@
-== README
+== TerraCycle OCSL notification receiver
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+** REST endpoint: /ocsl_notifications
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+    "swagger": "2.0",
+    "info": {
+        "version": "0.0.3",
+        "title": "TerraCycle OCSL notification receiver",
+        "description": "Processes TC notifications sent for every One-Click Shipping Label generated"
+    },
+    "schemes": [
+        "http"
+    ],
+    "host": "tc-ocsl-notifications.herokuapp.com",
+    "basePath": "/",
+    "paths": {
+        "/ocsl-notifications": {
+            "post": {
+                "responses": {
+                    "status": "200",
+                    "data": {
+                        ...
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "description": "UUID for the OCSL in the TC system",
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_params",
+                        "description": "Custom parameters passed by the client to the widget",
+                        "type": "string"
+                    },
+                    {
+                        "name": "brigade_name",
+                        "description": "Brigade chosen",
+                        "type": "string"
+                    },
+                    {
+                        "name": "first_name",
+                        "description": "First name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "last_name",
+                        "description": "Last name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "description": "Email",
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone_number",
+                        "description": "Phone number",
+                        "type": "string"
+                    },
+                    {
+                        "name": "address",
+                        "description": "Address line 1",
+                        "type": "string"
+                    },
+                    {
+                        "name": "address2",
+                        "description": "Address line 2",
+                        "type": "string"
+                    },
+                    {
+                        "name": "city",
+                        "description": "City",
+                        "type": "string"
+                    },
+                    {
+                        "name": "region",
+                        "description": "Region",
+                        "type": "string"
+                    },
+                    {
+                        "name": "zipcode",
+                        "description": "Zipcode",
+                        "type": "string"
+                    },
+                    {
+                        "name": "checkbox1",
+                        "description": "Checkbox1",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "checkbox2",
+                        "description": "Checkbox2",
+                        "type": "boolean"
+                    }
+                ]
+            }
+        }
+    }
+

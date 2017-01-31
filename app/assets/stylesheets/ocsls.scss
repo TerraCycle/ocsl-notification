@@ -1,0 +1,27 @@
+// Place all the styles related to the ocsl controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#container {
+  height: 100%;
+  overflow: hidden;
+
+  .column {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 100%;
+  }
+
+  #request-wrap {
+    width: 70%;
+
+    #request-form {
+      text-align: center;
+    }
+  }
+
+  #response-wrap {
+    width: 30%;
+  }
+}
