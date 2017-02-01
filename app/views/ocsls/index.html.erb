@@ -1,7 +1,46 @@
 <div id='container'>
-  <div id='request-wrap' class='column'>
-    <h3>OCSL request JSON example:</h3>
-    <div class='column'>
+  <h2 class='title'>
+    TerraCycle OCSL notification receiver
+  </h3>
+  <div class='wrap'>
+    <div id='request-wrap' class='column'>
+      <div id='request-form' class='column'>
+        <h3>OCSL Widget form </h3>
+        <form id='request'>
+          <div><input type="text" name="uuid" placeholder="uuid"></div>
+          <div><input type="text" name="client_params" placeholder="client_params"></div>
+          <div><input type="text" name="brigade_name" placeholder="brigade_name"></div>
+          <div><input type="text" name="first_name" placeholder="first_name"></div>
+          <div><input type="text" name="last_name" placeholder="last_name"></div>
+          <div><input type="text" name="email" placeholder="email"></div>
+          <div><input type="text" name="phone_number" placeholder="phone_number"></div>
+          <div><input type="text" name="address" placeholder="address"></div>
+          <div><input type="text" name="address2" placeholder="address2"></div>
+          <div><input type="text" name="city" placeholder="city"></div>
+          <div><input type="text" name="region" placeholder="region"></div>
+          <div><input type="text" name="zipcode" placeholder="zipcode"></div>
+          <div class="checkboxes"><input id="checkbox1" type="checkbox" name="checkbox1"><label for="checkbox1">Checkbox1</label></div>
+          <div class="checkboxes"><input id="checkbox2" type="checkbox" name="checkbox2"><label for="checkbox2">Checkbox2</label></div>
+
+          <button>Send Request</button>
+        </form>
+      </div>
+
+      <div class='request-json-wrap column'>
+        <h3>Request JSON data</h3>
+        <pre id='request-json'></pre>
+      </div>
+    </div>
+
+    <div id='response-wrap' class='column'>
+      <h3>RESPONSE</h3>
+      <pre id='response'></pre>
+    </div>
+  </div>
+
+  <div class='wrap'>
+    <div class='parameters column'>
+      <h3>REQUEST fields</h3>
       <% params =
         [{
             name: "uuid",
@@ -90,23 +129,15 @@
           <% end %>
         </tbody>
       </table>
-
-      </pre>
     </div>
-
-    <div id='request-form' class='column'>
-      <form id='request'>
-        <div>
-          <textarea name="json" cols=40 rows=20></textarea>
-        </div>
-
-        <button>send request</button>
-      </form>
+    <div class='column'>
+      <h3>LINKS</h3>
+      <div class='git-link'>
+        <a href='https://github.com/TerraCycle/ocsl-notification' target='_blank'>
+          View it on
+          <img src="/assets/github.jpg">
+        </a>
+      </div>
     </div>
-  </div>
-
-  <div id='response-wrap' class='column'>
-    <h3>RESPONSE: </h3>
-    <pre id='response'></pre>
   </div>
 </div>

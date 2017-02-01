@@ -1,6 +1,6 @@
 == TerraCycle OCSL notification receiver
 
-** REST endpoint: /ocsl_notifications
+** REST endpoint: /api/v1/ocsl_notifications
 
 
     "swagger": "2.0",
@@ -10,18 +10,35 @@
         "description": "Processes TC notifications sent for every One-Click Shipping Label generated"
     },
     "schemes": [
-        "http"
+        "https"
     ],
     "host": "tc-ocsl-notifications.herokuapp.com",
     "basePath": "/",
     "paths": {
-        "/ocsl-notifications": {
+        "/api/v1/ocsl-notifications": {
             "post": {
                 "responses": {
-                    "status": "200",
-                    "data": {
-                        ...
+                  "status": "200",
+                  "data": {
+                    "type": "ocsl_notifications",
+                    "attributes": {
+                      "uuid": "",
+                      "client_params": "",
+                      "brigade_name": "",
+                      "first_name": "",
+                      "last_name": "",
+                      "email": "",
+                      "phone_number": "",
+                      "address": "",
+                      "address2": "",
+                      "city": "",
+                      "region": "",
+                      "zipcode": "",
+                      "checkbox1": false,
+                      "checkbox2": false
                     }
+                  },
+                  "message": null
                 },
                 "parameters": [
                     {

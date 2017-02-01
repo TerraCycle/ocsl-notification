@@ -15,39 +15,39 @@
 //= require_tree .
 
 $(function(){
-  var json = {
-    uuid: '',
-    client_params: '',
-    brigade_name: '',
-    first_name: '',
-    last_name: '',
-    email: '',
-    phone_number: '',
-    address: '',
-    address2: '',
-    city: '',
-    region: '',
-    zipcode: '',
-    checkbox1: true,
-    checkbox2: false
-  };
-
-  $('#request textarea').text(JSON.stringify(json, undefined, 4));
-
   $('#request').submit(function(e) {
     e.preventDefault();
-    formData = JSON.parse($(this).serializeArray()[0].value);
+
+    // Serialize form data
+    formData = {};
+    $.each($(this).serializeArray(), function(i, el) {
+      formData[el.name] = el.value;
+    });
+
+    $('.checkboxes input').each(function(i, el) {
+      formData[el.name] = el.checked;
+    });
+
+    // JSON API response format
+    formatted = {
+      data: {
+        type: 'ocsl_notifications',
+        attributes: formData
+      }
+    }
+
+    $('#request-json').text(JSON.stringify(formatted, undefined, 4));
 
     $.ajax({
       method: 'POST',
-      url: '/ocsl_notifications',
-      data: { json: formData }
+      url: '/api/v1/ocsl_notifications',
+      data: formatted
     }).done(function(data) {
       console.log(data);
       $('#response').text(JSON.stringify(data, undefined, 4));
     }).fail(function(data) {
-      $('#response').text('fail');
-    })
-  })
+      $('#response').text('Ooops');
+    });
+  });
 });
 
