@@ -1,5 +1,12 @@
 == TerraCycle OCSL notification receiver
 
+To check all recieved requests for Widget use: /requests(/:token) where :token is widget id what's taken from
+    <YOUR HOST/SANDBOX>/ocsls/example/:token
+
+Or you can use form at '/requests' to enter the token
+
+==
+
 ** REST endpoint: /api/v1/ocsl_notifications
 
 
