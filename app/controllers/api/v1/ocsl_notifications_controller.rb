@@ -5,7 +5,10 @@ module Api
 
       # POST
       def create
-        render json: { status: 200, data: params.symbolize_keys[:data], message: nil }
+        data = JSON.parse(params.symbolize_keys[:data], symbolize_names: true)
+        Request.create!(token: data[:token], body: data[:attributes])
+
+        render json: { status: 200, data: data[:attributes], message: nil }
       end
     end
   end

@@ -75,3 +75,15 @@
     }
   }
 }
+
+table#requests {
+  margin-top: 20px;
+  width: 90%;
+
+  border-radius: 3px;
+  border-color: #fff;
+
+  td {
+    padding: 5px;
+  }
+}

@@ -1,5 +1,7 @@
 class OcslsController < ApplicationController
-  def index
+  def requests
+    @token = params[:token]
 
+    @requests = Request.where(token: @token)
   end
 end

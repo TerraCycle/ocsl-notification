@@ -1,0 +1,26 @@
+<p>WIDGET <%= @token %></p>
+
+<form id='get_requests' action='/requests' method='GET'>
+  <label for='token'>Widget token (/ocsls/example/<b>:token</b> )</label>
+  <input id='token' type='text' name='token'>
+  <button>GET REQUESTS</button>
+</form>
+
+<% if @requests.present? %>
+  <table id='requests' border="1" cellpadding="2" cellspacing="0">
+    <thead>
+      <th>WIDGET</th>
+      <th>JSON</th>
+      <th>CREATED AT</th>
+    </thead>
+    <% @requests.each do |req| %>
+    <tbody>
+      <tr>
+        <td><%= req.token %></td>
+        <td><%= req.body %></td>
+        <td><%= req.created_at %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+<% end %>
