@@ -1,24 +1,25 @@
-<p>WIDGET <%= @token %></p>
+<p>
+  <form id='get_requests' action='/requests' method='GET'>
+    <label for='token'>Widget token (/ocsls/example/<b>:token</b> )</label>
+    <input id='token' type='text' name='token'>
+    <button>GET REQUESTS</button>
+  </form>
+</p>
 
-<form id='get_requests' action='/requests' method='GET'>
-  <label for='token'>Widget token (/ocsls/example/<b>:token</b> )</label>
-  <input id='token' type='text' name='token'>
-  <button>GET REQUESTS</button>
-</form>
-
+<% if @token %><p>WIDGET <b><%= @token %></b></p><% end %>
 <% if @requests.present? %>
   <table id='requests' border="1" cellpadding="2" cellspacing="0">
     <thead>
-      <th>WIDGET</th>
+      <th width='200'>CREATED AT</th>
+      <th width='200'>WIDGET TOKEN</th>
       <th>JSON</th>
-      <th>CREATED AT</th>
     </thead>
     <% @requests.each do |req| %>
     <tbody>
       <tr>
+        <td><%= req.created_at %></td>
         <td><%= req.token %></td>
         <td><%= req.body %></td>
-        <td><%= req.created_at %></td>
       </tr>
     </tbody>
     <% end %>

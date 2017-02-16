@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'ocsls#index'
 
-  get 'requests/(:uuid)', to: 'ocsls#requests'
+  get 'requests/(:token)', to: 'ocsls#requests'
 
   namespace :api do
     namespace :v1 do
