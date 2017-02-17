@@ -4,6 +4,7 @@
 
 #container {
   height: 100%;
+  padding: 0 10px;
 
   .title a {
     font-size: 13px;
@@ -67,11 +68,21 @@
     width: 30%;
   }
 
+  .service-link {
+    background: #D6DADC;
+    border-radius: 3px;
+    padding: 2px 4px;
+    color: #444;
+  }
+
   .git-link {
-    img {
-      width: 115px;
-      margin-bottom: -12px;
-      margin-left: -10px;
+    margin-top: 10px;
+
+    .service-icon {
+      height: 14px;
+      margin-right: 3px;
+      vertical-align: middle;
+      width: 14px;
     }
   }
 }
