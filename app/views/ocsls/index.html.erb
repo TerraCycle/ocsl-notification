@@ -1,45 +1,52 @@
-<div id='container'>
+<div class='container-fluid'>
   <h2 class='title'>
-    TerraCycle OCSL notification receiver
+    TerraCycle OCSL notification reciever
   </h3>
-  <div class='wrap'>
-    <div id='request-wrap' class='column'>
-      <div id='request-form' class='column'>
-        <h3>OCSL Widget form </h3>
-        <form id='request'>
-          <div><input type="text" name="uuid" placeholder="uuid"></div>
-          <div><input type="text" name="client_params" placeholder="client_params"></div>
-          <div><input type="text" name="brigade_name" placeholder="brigade_name"></div>
-          <div><input type="text" name="first_name" placeholder="first_name"></div>
-          <div><input type="text" name="last_name" placeholder="last_name"></div>
-          <div><input type="text" name="email" placeholder="email"></div>
-          <div><input type="text" name="phone_number" placeholder="phone_number"></div>
-          <div><input type="text" name="address" placeholder="address"></div>
-          <div><input type="text" name="address2" placeholder="address2"></div>
-          <div><input type="text" name="city" placeholder="city"></div>
-          <div><input type="text" name="region" placeholder="region"></div>
-          <div><input type="text" name="zipcode" placeholder="zipcode"></div>
-          <div class="checkboxes"><input id="checkbox1" type="checkbox" name="checkbox1"><label for="checkbox1">Checkbox1</label></div>
-          <div class="checkboxes"><input id="checkbox2" type="checkbox" name="checkbox2"><label for="checkbox2">Checkbox2</label></div>
+  <div class='row'>
+    <div id='request-wrap' class='col-md-8 col-sm-12'>
+      <div class='row'>
+        <div class='col-md-6 col-sm-6 clearfix'>
+          <h3>OCSL Widget form </h3>
+          <form id='request' class='request-form'>
+            <div class='form-group'><input type='text' name='uuid' class='form-control input-sm' placeholder='uuid'></div>
+            <div class='form-group'>
+              <input type='text' name='optional_params' class='form-control input-sm' placeholder='optional_params'>
+              <p class='help-block'>This field is hidden on original Widget form and preffiled from <b>data-optional-params</b></p>
+            </div>
+            <div class='form-group'><input type='text' name='brigade_name' class='form-control input-sm' placeholder='brigade_name'></div>
+            <div class='form-group'><input type='text' name='first_name' class='form-control input-sm' placeholder='first_name'></div>
+            <div class='form-group'><input type='text' name='last_name' class='form-control input-sm' placeholder='last_name'></div>
+            <div class='form-group'><input type='text' name='email' class='form-control input-sm' placeholder='email'></div>
+            <div class='form-group'><input type='text' name='phone_number' class='form-control input-sm' placeholder='phone_number'></div>
+            <div class='form-group'><input type='text' name='address' class='form-control input-sm' placeholder='address'></div>
+            <div class='form-group'><input type='text' name='address2' class='form-control input-sm' placeholder='address2'></div>
+            <div class='form-group'><input type='text' name='city' class='form-control input-sm' placeholder='city'></div>
+            <div class='form-group'><input type='text' name='region' class='form-control input-sm' placeholder='region'></div>
+            <div class='form-group'><input type='text' name='zipcode' class='form-control input-sm' placeholder='zipcode'></div>
+            <div class='checkbox'><label for='checkbox1'><input id='checkbox1' type='checkbox' name='checkbox1'>Check to sent</label></div>
+            <div class='checkbox'><label for='checkbox2'><input id='checkbox2' type='checkbox' name='checkbox2'>Check to sent</label></div>
 
-          <button>Send Request</button>
-        </form>
-      </div>
+            <button type='submit' class='btn btn-default pull-right'>Send Request</button>
+          </form>
+        </div>
 
-      <div class='request-json-wrap column'>
-        <h3>Request JSON data</h3>
-        <pre id='request-json'></pre>
+        <div class='request-json-wrap col-md-6 col-sm-6'>
+          <h3>Request JSON data</h3>
+          <pre id='request-json'></pre>
+        </div>
       </div>
     </div>
 
-    <div id='response-wrap' class='column'>
-      <h3>RESPONSE</h3>
-      <pre id='response'></pre>
+    <div id='response-wrap' class='col-md-4 col-sm-12'>
+      <div>
+        <h3>RESPONSE</h3>
+        <pre id='response'></pre>
+      </div>
     </div>
   </div>
 
-  <div class='wrap'>
-    <div class='parameters column'>
+  <div class='row'>
+    <div class='col-md-6'>
       <h3>REQUEST fields</h3>
       <% params =
         [{
@@ -48,8 +55,9 @@
             type: "string"
         },
         {
-            name: "client_params",
-            description: "Custom parameters passed by the client to the widget",
+            name: "optional_params",
+            description: "This field is <i><b>hidden</b></i> and prefilled with data from
+              Widget initialization attribute <i><b>data-optional-params</i></b>",
             type: "string"
         },
         {
@@ -104,16 +112,16 @@
         },
         {
             name: "checkbox1",
-            description: "checkbox1",
+            description: "Optional setting based on your widget configuration. Sent only if checked.",
             type: "boolean"
         },
         {
             name: "checkbox2",
-            description: "checkbox2",
+            description: "Optional setting based on your widget configuration. Sent only if checked.",
             type: "boolean"
         }]
       %>
-      <table border="1" cellpadding="2" cellspacing="0">
+      <table class='table table-striped table-bordered table-condensed'>
         <thead>
           <th>FIELD</th>
           <th>TYPE</th>
@@ -124,20 +132,22 @@
             <tr>
               <td><%= el[:name] %></td>
               <td><%= el[:type] %></td>
-              <td><%= el[:description] %></td>
+              <td><%= el[:description].html_safe %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-    <div class='column'>
+    <div class='col-md-6'>
       <h3>LINKS</h3>
-      <p>To check all recieved requests <a href='/requests' class='service-link'>click here</a><p>
-      <p class='git-link'>
-        <a href='https://github.com/TerraCycle/ocsl_example' target='_blank' rel='noreferrer' class='service-link'>
-          <img class='service-icon' src='/assets/github.svg'>TerraCycle/ocsl-notification
-        </a>
-      </p>
+      <ul>
+        <li>To check all recieved requests <a href='/requests' class='service-link'>click here</a></li>
+        <li class='git-link'>
+          <a href='https://github.com/TerraCycle/ocsl_example' target='_blank' rel='noreferrer' class='service-link'>
+            <img class='git-icon' src='/assets/github.svg'>TerraCycle/ocsl-notification
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

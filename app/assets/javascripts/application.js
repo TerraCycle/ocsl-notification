@@ -24,8 +24,8 @@ $(function(){
       formData[el.name] = el.value;
     });
 
-    $('.checkboxes input').each(function(i, el) {
-      formData[el.name] = el.checked;
+    $(this).find('.checkbox input').each(function(i, el) {
+      if(el.checked) formData[el.name] = el.checked;
     });
 
     // JSON API response format
