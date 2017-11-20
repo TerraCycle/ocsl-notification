@@ -19,15 +19,12 @@ module Api
       private
 
       def create_request
-        orig_params = params.symbolize_keys[:data]
-        if orig_params['token'].nil?
-          @data = orig_params.merge(token: 'test').symbolize_keys
-        else
-          @data = JSON.parse(params.symbolize_keys[:data], symbolize_names: true)
-        end
+        hash = params['app'].present? ? params['data'] : JSON.parse(params.first[0])['data']
+        @data = hash.with_indifferent_access
+        @data[:token] = 'test' if @data[:token].nil?
         begin
-          @data[:attributes]['client_data'] =
-            JWT.decode(orig_params['attributes']['optional_params'], nil, false).first
+          @data[:attributes][:client_data] =
+            JWT.decode(@data[:attributes][:optional_params], nil, false).first
         rescue Exception => e
         end
         Request.create!(token: @data[:token], body: @data[:attributes])

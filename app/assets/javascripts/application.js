@@ -30,6 +30,7 @@ $(function(){
 
     // JSON API response format
     formatted = {
+      app: 'test_app',
       data: {
         type: 'ocsl_notifications',
         attributes: formData
@@ -50,4 +51,3 @@ $(function(){
     });
   });
 });
-
