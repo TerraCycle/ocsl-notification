@@ -57,7 +57,8 @@
         {
             name: "optional_params",
             description: "This field is <i><b>hidden</b></i> and prefilled with data from
-              Widget initialization attribute <i><b>data-optional-params</i></b>. <b><i>Client data</i></b> has gotten from the web token given as optional_params.",
+              Widget initialization attribute <i><b>data-optional-params</i></b>.<br><br>
+              <b>ATTENTION:</b> If it's JSON Web Token then you will get parsed data in <code>client_data</code> response field.",
             type: "string"
         },
         {
@@ -130,7 +131,7 @@
         <tbody>
           <% params.each do |el| %>
             <tr>
-              <td><%= el[:name] %></td>
+              <td><code><%= el[:name] %></code></td>
               <td><%= el[:type] %></td>
               <td><%= el[:description].html_safe %></td>
             </tr>

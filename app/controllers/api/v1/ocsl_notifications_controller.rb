@@ -1,3 +1,6 @@
+require 'base64'
+require 'jwt'
+
 module Api
   module V1
     class OcslNotificationsController < ApplicationController
@@ -21,6 +24,11 @@ module Api
           @data = orig_params.merge(token: 'test').symbolize_keys
         else
           @data = JSON.parse(params.symbolize_keys[:data], symbolize_names: true)
+        end
+        begin
+          @data[:attributes]['client_data'] =
+            JWT.decode(orig_params['attributes']['optional_params'], nil, false).first
+        rescue Exception => e
         end
         Request.create!(token: @data[:token], body: @data[:attributes])
       end
